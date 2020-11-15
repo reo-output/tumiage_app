@@ -1,0 +1,15 @@
+{% extends "layout_login.html" %}
+{% block contents %}
+  <h3>積み上げの投稿</h3>
+  <div class="tumiage-list">
+  <form action="/write/try" method="POST"
+    class="pure-form">
+    <textarea name="text" rows="4"></textarea>
+    <br><br>
+    <button type="submit" class="pure-button pure-button-primary">
+    投稿</button>
+  </form>
+  </div>
+  <br><br><br>
+{% endblock %}
+

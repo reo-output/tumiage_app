@@ -1,0 +1,38 @@
+{% extends "layout_login.html" %}
+
+{# ユーザー個別ページなのでタイトルも変更 --- (*1) #}
+{% block title %}
+  {{ user_id }}さんの積み上げ
+{% endblock %}
+
+{% block contents %}
+
+{# フォロー登録有無と登録解除リンク --- (*2) #}
+<div class="box_c">
+  {% if is_fav %}
+    ❤️ <a class="pure-button"
+    href="/fav/remove/{{ user_id }}">
+    フォローを外す</a>
+  {% else %}
+    <a class="pure-button"
+    href="/fav/add/{{ user_id }}">フォローする</a>
+  {% endif %}
+</div>
+
+<h3>積み上げ</h3>
+
+{# 積み上げ一覧を表示 --- (*3) #}
+{% if text_list | length == 0 %}
+  積み上げはまだありません。
+{% endif %}
+<div class="tumiage-list">
+{% for t in text_list %}
+  <div class="tumiage">
+    {{ t.text | linebreak }}
+    <p class="info">{{ t.time | datestr }}</p>
+  </div>
+{% endfor %}
+</div>
+
+{% endblock %}
+

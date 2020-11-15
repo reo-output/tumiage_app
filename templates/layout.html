@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8">
+  <meta name="viewport" 
+    content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/pure-min.css">
+  <link rel="stylesheet" href="/static/side-menu.css">
+  <link rel="stylesheet" type="text/css"
+        href="{{ staticfile('style.css') }}">
+  <title>TUMIAGE</title>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</head><body>
+<div id="layout" class="page">
+{% block header %}
+<!-- ここにヘッダの内容 -->
+{% endblock %}
+<div id="main">
+<div class="header">
+<h1>
+  {% block title %}
+  TUMIAGE
+  {% endblock %}
+</h1>
+<h3>
+    〜学習ログ投稿サービス・友達と学びをシェア！〜
+</h3>
+</div><!-- end of .header -->
+  
+<div class="contents">
+  {% block contents %}
+  <!-- ここにメインコンテンツ -->
+  {% endblock %}
+</div><!-- end of .contents -->
+
+{% block footer %}
+  <p class="footer"><a href="/" class="pure-button">
+  トップページへ移動</a></p>
+{% endblock %}
+</div><!-- end of #main -->
+</div><!-- end of #layout -->
+
+{% block footer_script %}{% endblock %}
+</body></html>
+

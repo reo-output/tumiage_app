@@ -1,0 +1,44 @@
+{% extends "layout_login.html" %}
+
+{% block contents %}
+
+{# フォローユーザーの一覧を表示 #}
+<div class="box pure-menu-horizontal pure-menu-scrollable">
+  フォローユーザー:
+  {% for u in fav_users %}
+    <a class="pure-button" href="/users/{{ u }}">{{ u }}</a>
+  {% endfor %}
+</div>
+
+{# 全てのユーザーの一覧を表示 #}
+<div class="box pure-menu-horizontal pure-menu-scrollable">
+  すべてのユーザー:
+  {% for u in users %}
+    <a class="pure-button" href="/users/{{ u }}">{{ u }}</a>
+  {% endfor %}
+</div>
+
+
+{# タイムラインを表示 --- (*3) #}
+<h3>{{ id }}のタイムライン</h3>
+<div class="tumiage-list">
+{% if timelines | length == 0 %}
+  <div class="box">タイムラインに積み上げがありません。
+   積み上げを書くか他のユーザーをフォローしてください。</div>
+{% endif %}
+{% for i in timelines %}
+  <div class="tumiage">
+    {{ i.text | linebreak }}
+    <p class="info">
+      {{ i.time | datestr }}
+      user: <a href="/users/{{ i.id }}">{{ i.id }} </a></p>
+  <div class="footer">
+    <a href="https://twitter.com/share" class="twitter-share-button"  data-url="https://tumiage.herokuapp.com/" data-text="{{ default }}" data-lang="ja" data-count="horizontal" data-hashtags="TUMIAGE" data-size="large">Tweet</a>
+  </div>
+  </div>
+{% endfor %}
+</div>
+
+
+{% endblock %}
+
